@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 import logging
-print(pyodbc.drivers())
+
 
 # Load environment variables
 load_dotenv()
