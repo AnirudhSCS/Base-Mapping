@@ -2,9 +2,9 @@ from io import BytesIO
 import pyodbc
 import pandas as pd
 import streamlit as st
-import os
 from dotenv import load_dotenv
 import logging
+print(pyodbc.drivers())
 
 # Load environment variables
 load_dotenv()
