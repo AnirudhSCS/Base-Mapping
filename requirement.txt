@@ -1,7 +1,7 @@
 streamlit
-os
+pyodbc
 pandas
 io
 dotenv
 logging
-pyodbc
+xlsxwriter
