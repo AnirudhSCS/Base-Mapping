@@ -1,7 +1,5 @@
-streamlit
-pyodbc
+pymssql
 pandas
-io
-dotenv
-logging
+streamlit
+python-dotenv
 xlsxwriter
