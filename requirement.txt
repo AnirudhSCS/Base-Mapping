@@ -1,0 +1,7 @@
+streamlit
+os
+pandas
+pyodbc
+io
+dotenv
+logging
