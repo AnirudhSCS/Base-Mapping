@@ -1,6 +1,5 @@
+streamlit
 pyodbc
 pandas
-io
-dotenv
-logging
+python-dotenv
 xlsxwriter
