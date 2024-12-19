@@ -1,10 +1,9 @@
 from io import BytesIO
-import pyodbc
+import pymssql  # Use pymssql instead of pyodbc
 import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 import logging
-
 
 # Load environment variables
 load_dotenv()
@@ -15,12 +14,12 @@ logging.basicConfig(level=logging.DEBUG)
 # Database connection function
 def get_db_connection():
     try:
-        conn = pyodbc.connect(
-       "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=103.153.58.143,2498;"
-        "DATABASE=z_scope;"
-        "UID=sa;"
-        "PWD=FnSDj*38J6Z#949sdgj;"
+        # Use pymssql to connect to the database
+        conn = pymssql.connect(
+            server='103.153.58.143',  # SQL Server address
+            user='sa',                # SQL Server username
+            password='FnSDj*38J6Z#949sdgj',  # SQL Server password
+            database='z_scope'        # SQL Server database
         )
         logging.debug("Database connection established.")
         return conn
@@ -88,7 +87,7 @@ def fetch_result(brand_id, dealer_id, procedure):
 
         if procedure == 'Base':
             # Execute the stored procedure for "base"
-            cursor.execute("EXEC z_scope.dbo.tops_vs_scs_norms_base1 @brandid = ?, @dealerid = ?", (brand_id, dealer_id))
+            cursor.execute("EXEC z_scope.dbo.tops_vs_scs_norms_base1 @brandid = %s, @dealerid = %s", (brand_id, dealer_id))
             logging.debug("Executed stored procedure: tops_vs_scs_norms_base1")
 
             # Fetch data from the database
@@ -117,7 +116,7 @@ def fetch_result(brand_id, dealer_id, procedure):
 
         elif procedure == 'Mapping':
             # Execute the stored procedure for "mapping"
-            cursor.execute("EXEC z_scope.dbo.Tops_vs_SCS_Norms_test1 @brandid = ?, @dealerid = ?", (brand_id, dealer_id))
+            cursor.execute("EXEC z_scope.dbo.Tops_vs_SCS_Norms_test1 @brandid = %s, @dealerid = %s", (brand_id, dealer_id))
             logging.debug("Executed stored procedure: Tops_vs_SCS_Norms_test1")
 
             # Fetch data from the database
