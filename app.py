@@ -16,11 +16,11 @@ logging.basicConfig(level=logging.DEBUG)
 def get_db_connection():
     try:
         conn = pyodbc.connect(
-            f"DRIVER={{SQL Server}};"
-            f"SERVER={os.getenv('DB_SERVER')};"
-            f"DATABASE={os.getenv('DB_DATABASE')};"
-            f"UID={os.getenv('DB_USERNAME')};"
-            f"PWD={os.getenv('DB_PASSWORD')};"
+       "DRIVER={ODBC Driver 17 for SQL Server};"
+        "SERVER=103.153.58.143,2498;"
+        "DATABASE=z_scope;"
+        "UID=sa;"
+        "PWD=FnSDj*38J6Z#949sdgj;"
         )
         logging.debug("Database connection established.")
         return conn
